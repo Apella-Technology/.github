@@ -1,0 +1,13 @@
+{
+    "name": "Apella Technology Workflow",
+    "description": "Apella Technology CI workflow template.",
+    "iconName": "example-icon",
+    "categories": [
+        "Go"
+    ],
+    "filePatterns": [
+        ".*.py$",
+        "^Dockerfile",
+        ".*\\.md$"
+    ]
+}
