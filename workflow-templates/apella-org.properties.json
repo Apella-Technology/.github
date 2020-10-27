@@ -8,6 +8,7 @@
     "filePatterns": [
         ".*.py$",
         "^Dockerfile",
+        "^docker-compose.yml$",
         ".*\\.md$"
     ]
 }
