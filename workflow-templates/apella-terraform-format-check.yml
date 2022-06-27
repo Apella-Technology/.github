@@ -1,0 +1,20 @@
+name: Terraform Format Check
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  check-terraform-format:
+    runs-on: ubuntu-latest
+    name: Check that terraform files are formatted correctly
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: terraform fmt
+        uses: dflook/terraform-fmt-check@v1
+        with:
+          path: path-to-terraform-directory
