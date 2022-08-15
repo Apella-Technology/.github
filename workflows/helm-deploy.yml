@@ -1,0 +1,44 @@
+name: Helm Install Package and Deploy
+
+on:
+  workflow_call:
+    inputs:
+      APPLICATION_NAME:
+        description: The name of your application helm chart (e.g. cloud-api-server)
+        type: string
+        required: true
+      VERSION:
+        description: Semver release version to deploy (e.g. 1.0.1)
+        type: string
+        required: true
+      HELM_FOLDER:
+        description: The folder your helm charts are located
+        type: string
+        default: helm
+        required: false
+    secrets:
+      JFROG_API_KEY:
+        description: JFrog API Key
+        required: true
+
+jobs:
+  Package-Modules:
+    runs-on: [self-hosted, prod]
+
+    steps:
+      - name: Install Helm
+        run: curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
+
+      - name: Package Helm Charts
+        env:
+          HELM_FOLDER: ${{ inputs.HELM_FOLDER }}
+          VERSION: ${{ inputs.VERSION }}
+        run: helm package ${{ env.HELM_FOLDER }} --version ${{ env.VERSION }} --appVersion ${{ env.VERSION }}
+
+      - name: Publish helm charts
+        env:
+          APPLICATION_NAME: ${{ inputs.APPLICATION_NAME }}
+          JFROG_API_KEY: ${{ secrets.JFROG_API_KEY }}
+          VERSION: ${{ inputs.VERSION }}
+        run: |
+          curl -H "X-JFrog-Art-API:{{ env.JFROG_API_KEY }}" -T guestbook-0.1.3.tgz "https://apella.jfrog.io/artifactory/local-helm/${{ env.APPLICATION_NAME }}/-${{ env.VERSION}}.tgz"
