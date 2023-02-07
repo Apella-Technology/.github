@@ -1,6 +1,6 @@
 ## Related Issues
 
-https://linear.app/apella/issue/PS-####
+https://linear.app/apella/issue/####
 
 ## Summary
 
@@ -25,4 +25,3 @@ If any of the following are checked, please explain in the PR summary.
 
 - [ ] This change affects _Security_
 - [ ] This change affects _DevOps_
-
