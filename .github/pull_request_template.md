@@ -17,6 +17,6 @@ Replace this text with your PR summary.
 ## Important considerations
 
 If any of these boxes are checked, a thorough explanation should be given in the Summary and code
-reviewers should give extra scruitny.
+reviewers should give extra scrutiny.
 
 - [ ] This change affects **Authentication and/or Authorization**
