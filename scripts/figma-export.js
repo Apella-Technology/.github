@@ -154,19 +154,45 @@ function figmaUploadImage(base64png) {
 async function takeScreenshots() {
   let puppeteer;
   try {
-    puppeteer = require("puppeteer");
+    puppeteer = require("puppeteer-core");
   } catch {
+    console.error("puppeteer-core is not installed. Run:  npm install");
+    process.exit(1);
+  }
+
+  // Resolve the browser executable. In order of preference:
+  //   1. CHROME_PATH env var (user-supplied)
+  //   2. Common Linux paths for Chromium / Chrome
+  const CHROME_CANDIDATES = [
+    process.env.CHROME_PATH,
+    "/usr/bin/chromium",
+    "/usr/bin/chromium-browser",
+    "/usr/bin/google-chrome",
+    "/usr/bin/google-chrome-stable",
+    "/snap/bin/chromium",
+    "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+  ].filter(Boolean);
+
+  const executablePath = CHROME_CANDIDATES.find((p) => {
+    try { return fs.existsSync(p); } catch { return false; }
+  });
+
+  if (!executablePath) {
     console.error(
-      "Puppeteer is not installed. Run:  npm install\n" +
-        "If npm is unavailable, install it via your package manager."
+      "No Chrome / Chromium binary found.\n" +
+        "Install Chromium (e.g. apt install chromium) or set CHROME_PATH:\n" +
+        "  CHROME_PATH=/path/to/chrome FIGMA_TOKEN=... npm run figma-export"
     );
     process.exit(1);
   }
 
+  console.log(`[browser] Using executable: ${executablePath}`);
+
   fs.mkdirSync(SCREENSHOTS_DIR, { recursive: true });
 
   const browser = await puppeteer.launch({
-    headless: "new",
+    executablePath,
+    headless: true,
     args: ["--no-sandbox", "--disable-setuid-sandbox"],
   });
 
