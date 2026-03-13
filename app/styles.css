@@ -1,134 +1,259 @@
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+/* ─────────────────────────────────────────────────────────────
+   Design tokens — sourced directly from Figma styles
+   ───────────────────────────────────────────────────────────── */
+:root {
+  --grey-20:    #F2F2F2; /* Light/Grey/20  — page background      */
+  --grey-40:    #BFBFBF; /* Light/Grey/40  — frame border         */
+  --grey-50:    #999999; /* Light/Grey/50  — icons, tile left bg  */
+  --grey-70:    #4D4D4D; /* Light/Grey/70  — module subtitles     */
+  --grey-80:    #333333; /* Light/Grey/80  — tile names, headings */
+  --grey-90:    #191919; /* Light/Grey/90  — logotype, darkest    */
+  --blue-10:    #CCE2FF; /* Light/Blue/10  — active nav tab       */
+  --blue-20:    #99C5FF; /* Light/Blue/20  — selected tile bg     */
+  --blue-50:    #006EFD; /* Light/Blue/50  — Pulse title + icon   */
+  --green-50:   #0FAA6B; /* Light/Green/50 — Horizon title        */
+  --magenta-50: #F45CA7; /* Light/Magenta/50 — Insight title      */
+  --white:      #FFFFFF;
+}
 
+/* ─────────────────────────────────────────────────────────────
+   Reset
+   ───────────────────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Body — centers the fixed-width frame on screen
+   ───────────────────────────────────────────────────────────── */
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  color: #111827;
-  background: #f9fafb;
-  line-height: 1.6;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: #E8E8E8;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  padding: 32px;
 }
 
-.container {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 0 24px;
+/* ─────────────────────────────────────────────────────────────
+   Root frame — 1249 × 926 px  (Figma: A2G / Frame 205:2495)
+   background: Grey/20, border: 1px Grey/40
+   ───────────────────────────────────────────────────────────── */
+.frame-a2g {
+  position: relative;
+  width: 1249px;
+  height: 926px;
+  background: var(--grey-20);
+  border: 1px solid var(--grey-40);
+  overflow: hidden;
+  flex-shrink: 0;
 }
 
-/* Header */
-.header {
-  background: #fff;
-  border-bottom: 1px solid #e5e7eb;
-  padding: 16px 0;
-  position: sticky;
-  top: 0;
-  z-index: 100;
-}
-
-.header .container {
+/* ─────────────────────────────────────────────────────────────
+   Logotype  — 205:2533  left=81px top=64px  170 × 57px
+   ───────────────────────────────────────────────────────────── */
+.logotype {
+  position: absolute;
+  left: 81px;
+  top: 64px;
+  width: 170px;
+  height: 57px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  gap: 18px; /* gap between mark (30px) and wordmark (97px) */
 }
 
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 18px;
-  font-weight: 700;
-  color: #111827;
-  text-decoration: none;
+.logo-mark {
+  flex-shrink: 0;
+  width: 30px;
+  height: 31px;
 }
 
-nav { display: flex; gap: 28px; }
-nav a {
-  text-decoration: none;
-  color: #6b7280;
-  font-size: 15px;
-  font-weight: 500;
-  transition: color 0.15s;
-}
-nav a:hover { color: #2563eb; }
-
-/* Hero */
-.hero {
-  background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
-  color: white;
-  padding: 96px 0;
-  text-align: center;
-}
-
-.hero h1 {
-  font-size: 52px;
-  font-weight: 800;
-  line-height: 1.15;
-  margin-bottom: 20px;
-  letter-spacing: -0.02em;
-}
-
-.hero p {
-  font-size: 20px;
-  color: #bfdbfe;
-  margin-bottom: 40px;
-  max-width: 520px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.cta-group { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
-
-.btn {
-  display: inline-block;
-  padding: 14px 32px;
-  border-radius: 8px;
-  font-size: 16px;
+.logo-wordmark {
+  font-size: 26px;
   font-weight: 600;
-  text-decoration: none;
-  transition: transform 0.15s, box-shadow 0.15s;
-}
-.btn:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(0,0,0,0.15); }
-
-.btn-primary { background: #fff; color: #2563eb; }
-.btn-outline { background: transparent; color: #fff; border: 2px solid rgba(255,255,255,0.6); }
-
-/* Features */
-.features {
-  padding: 80px 0;
-  background: #f9fafb;
+  color: var(--grey-90);
+  letter-spacing: -0.02em;
+  line-height: 1;
+  white-space: nowrap;
 }
 
-.features h2 {
-  text-align: center;
-  font-size: 34px;
-  font-weight: 700;
-  margin-bottom: 48px;
-  color: #111827;
-}
-
-.feature-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+/* ─────────────────────────────────────────────────────────────
+   Modules grid — Frame 11 / 205:2534
+   left=83px top=176px  1104 × 271px
+   HORIZONTAL, wrap, paddingLeft=8, paddingRight=8, gap=24
+   ───────────────────────────────────────────────────────────── */
+.modules-grid {
+  position: absolute;
+  left: 83px;
+  top: 176px;
+  width: 1104px;
+  height: 271px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 0 8px;
   gap: 24px;
+  align-items: flex-start;
 }
 
-.card {
-  background: #fff;
-  border: 1px solid #e5e7eb;
-  border-radius: 12px;
-  padding: 32px 28px;
-  transition: box-shadow 0.2s;
+/* Each column — flex: 1, matches layoutGrow=1 */
+.module {
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
 }
-.card:hover { box-shadow: 0 8px 32px rgba(37,99,235,0.1); }
 
-.card .icon { font-size: 32px; margin-bottom: 14px; }
-.card h3 { font-size: 18px; font-weight: 700; margin-bottom: 10px; color: #111827; }
-.card p { font-size: 15px; color: #6b7280; }
+/* ─────────────────────────────────────────────────────────────
+   Module typography
+   ───────────────────────────────────────────────────────────── */
 
-/* Footer */
-.footer {
-  background: #fff;
-  border-top: 1px solid #e5e7eb;
-  padding: 28px 0;
-  text-align: center;
-  color: #9ca3af;
-  font-size: 14px;
+/* H3-24: Heading/H3 — 24px/600/32px lh, tracking -0.48px */
+.module-title {
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 32px;
+  letter-spacing: -0.48px;
+  margin-bottom: 16px;
+}
+
+.pulse   .module-title { color: var(--blue-50);    }
+.horizon .module-title { color: var(--green-50);   }
+.insight .module-title { color: var(--magenta-50); }
+
+/* P2-16: Paragraph/P2 — 16px/450/24px lh */
+.module-subtitle {
+  font-size: 16px;
+  font-weight: 500; /* 450 rounds to 500 in Inter */
+  line-height: 24px;
+  color: var(--grey-70);
+  margin-bottom: 16px;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Tile list — VERTICAL, gap=20px (product modules)
+   ───────────────────────────────────────────────────────────── */
+.tile-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Tile (Apella Tile v2) — 328 × 74px
+   border-radius: 8px, background white
+   ───────────────────────────────────────────────────────────── */
+.tile {
+  width: 328px;
+  height: 74px;
+  display: flex;
+  flex-direction: row;
+  border-radius: 8px;
+  background: var(--white);
+  overflow: hidden;
+  cursor: pointer;
+  transition: box-shadow 0.15s ease;
+}
+
+.tile:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.10);
+}
+
+/* Selected state — whole card tinted Blue/20 (#99C5FF) */
+.tile--selected {
+  background: var(--blue-20);
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Tile left section — 74 × 74px
+   border-radius: 8px 0 0 8px, grey background by default
+   ───────────────────────────────────────────────────────────── */
+.tile__left {
+  width: 74px;
+  height: 74px;
+  flex-shrink: 0;
+  border-radius: 8px 0 0 8px; /* Figma: rectangleCornerRadii [8,0,0,8] */
+  background: var(--grey-50);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Selected Pulse tile: left section uses full Blue/50 */
+.tile__left--blue {
+  background: var(--blue-50);
+}
+
+/* Material icon inside the tile */
+.tile__left .material-symbols-outlined {
+  font-size: 43px;
+  color: var(--white);
+  font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 48;
+  line-height: 1;
+  user-select: none;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Tile right lockup
+   starts at x=90px from tile left (left section 74px + 16px gap)
+   ───────────────────────────────────────────────────────────── */
+.tile__right {
+  flex: 1;
+  padding: 13px 16px 0 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* H4-20: Heading/H4 — 20px/600/28px lh, tracking -0.4px */
+.tile__name {
+  display: block;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 28px;
+  letter-spacing: -0.40px;
+  color: var(--grey-80);
+}
+
+/* P3-13: Paragraph/P3 — 13px/450/20px lh */
+.tile__desc {
+  display: block;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 20px;
+  color: var(--grey-50);
+}
+
+/* ─────────────────────────────────────────────────────────────
+   More Tools section — Frame 1409 / 205:2554
+   left=83px top=487px  1104 × 212px
+   VERTICAL, paddingLeft=8, paddingRight=8, gap=16
+   ───────────────────────────────────────────────────────────── */
+.more-tools {
+  position: absolute;
+  left: 83px;
+  top: 487px;
+  width: 1104px;
+  height: 212px;
+  display: flex;
+  flex-direction: column;
+  padding: 0 8px;
+  gap: 16px;
+  align-items: flex-start; /* tiles are 328px, not full-width */
+}
+
+/* Section heading — same type scale as module-title */
+.section-title {
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 32px;
+  letter-spacing: -0.48px;
+  color: var(--grey-80);
+}
+
+/* More Tools tile-list: same component, gap=16 (overrides .tile-list gap=20) */
+.more-tools .tile-list {
+  gap: 16px;
 }

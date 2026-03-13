@@ -3,71 +3,151 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Apella Technology</title>
+  <title>Apella — Home</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,1,0&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <header class="header">
-    <div class="container">
-      <div class="logo">
-        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect width="32" height="32" rx="8" fill="#2563EB"/>
-          <path d="M8 24L16 8L24 24H19.5L16 17L12.5 24H8Z" fill="white"/>
-        </svg>
-        <span>Apella Technology</span>
-      </div>
-      <nav>
-        <a href="#">Home</a>
-        <a href="#">Products</a>
-        <a href="#">Docs</a>
-        <a href="#">Contact</a>
-      </nav>
-    </div>
-  </header>
 
-  <section class="hero">
-    <div class="container">
-      <h1>Build faster.<br/>Ship with confidence.</h1>
-      <p>Developer tooling and CI/CD workflows for modern engineering teams.</p>
-      <div class="cta-group">
-        <a class="btn btn-primary" href="#">Get Started</a>
-        <a class="btn btn-outline" href="#">View on GitHub</a>
-      </div>
-    </div>
-  </section>
+  <div class="frame-a2g">
 
-  <section class="features">
-    <div class="container">
-      <h2>What we offer</h2>
-      <div class="feature-grid">
-        <div class="card">
-          <div class="icon">⚡</div>
-          <h3>Workflow Templates</h3>
-          <p>Reusable GitHub Actions workflows for Go, Python, Docker, and Terraform — ready to drop into any repo.</p>
-        </div>
-        <div class="card">
-          <div class="icon">🔒</div>
-          <h3>Security Checks</h3>
-          <p>Built-in static analysis, dependency scanning, and secret detection integrated into every pipeline.</p>
-        </div>
-        <div class="card">
-          <div class="icon">🚀</div>
-          <h3>Fast Deployments</h3>
-          <p>Terraform-driven infrastructure with automated format checks and plan previews on every PR.</p>
-        </div>
-        <div class="card">
-          <div class="icon">📋</div>
-          <h3>PR Standards</h3>
-          <p>Consistent pull request templates with Linear integration to keep your team aligned and moving.</p>
+    <!-- ── Logotype ── left=81px top=64px 170×57px -->
+    <div class="logotype">
+      <!-- Apella mark — replace with actual SVG export from Figma (node I205:2533;1110:42833;1110:42565;1108:42587) -->
+      <svg class="logo-mark" width="30" height="31" viewBox="0 0 30 31" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M15 1.5L0.5 28.5H5.5L15 10.5L24.5 28.5H29.5L15 1.5Z" fill="#191919"/>
+        <path d="M8.5 23H21.5" stroke="#F2F2F2" stroke-width="1.8" stroke-linecap="round"/>
+      </svg>
+      <span class="logo-wordmark">Apella</span>
+    </div>
+
+    <!-- ── 3-column product modules — left=83px top=176px 1104×271px ── -->
+    <section class="modules-grid" aria-label="Product modules">
+
+      <!-- Pulse -->
+      <div class="module pulse">
+        <h2 class="module-title">Pulse</h2>
+        <p class="module-subtitle">Real-time visibility &amp; coordination</p>
+        <div class="tile-list">
+
+          <!-- Tile 1 — selected / active -->
+          <div class="tile tile--selected">
+            <div class="tile__left tile__left--blue">
+              <span class="material-symbols-outlined" aria-hidden="true">sensors</span>
+            </div>
+            <div class="tile__right">
+              <span class="tile__name">Live View</span>
+              <span class="tile__desc">Real-time status board</span>
+            </div>
+          </div>
+
+          <!-- Tile 2 -->
+          <div class="tile">
+            <div class="tile__left">
+              <span class="material-symbols-outlined" aria-hidden="true">campaign</span>
+            </div>
+            <div class="tile__right">
+              <span class="tile__name">Incidents</span>
+              <span class="tile__desc">Track live incidents</span>
+            </div>
+          </div>
+
         </div>
       </div>
-    </div>
-  </section>
 
-  <footer class="footer">
-    <div class="container">
-      <span>© 2026 Apella Technology. All rights reserved.</span>
-    </div>
-  </footer>
+      <!-- Horizon -->
+      <div class="module horizon">
+        <h2 class="module-title">Horizon</h2>
+        <p class="module-subtitle">Scheduling &amp; capacity optimization</p>
+        <div class="tile-list">
+
+          <div class="tile">
+            <div class="tile__left">
+              <span class="material-symbols-outlined" aria-hidden="true">calendar_month</span>
+            </div>
+            <div class="tile__right">
+              <span class="tile__name">Schedule</span>
+              <span class="tile__desc">Staff scheduling</span>
+            </div>
+          </div>
+
+          <div class="tile">
+            <div class="tile__left">
+              <span class="material-symbols-outlined" aria-hidden="true">group</span>
+            </div>
+            <div class="tile__right">
+              <span class="tile__name">Roster</span>
+              <span class="tile__desc">Team capacity</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Insight -->
+      <div class="module insight">
+        <h2 class="module-title">Insight</h2>
+        <p class="module-subtitle">Analytics &amp; process improvement</p>
+        <div class="tile-list">
+
+          <div class="tile">
+            <div class="tile__left">
+              <span class="material-symbols-outlined" aria-hidden="true">bar_chart</span>
+            </div>
+            <div class="tile__right">
+              <span class="tile__name">Performance</span>
+              <span class="tile__desc">KPI dashboards</span>
+            </div>
+          </div>
+
+          <div class="tile">
+            <div class="tile__left">
+              <span class="material-symbols-outlined" aria-hidden="true">summarize</span>
+            </div>
+            <div class="tile__right">
+              <span class="tile__name">Reports</span>
+              <span class="tile__desc">Compliance reports</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </section><!-- /modules-grid -->
+
+    <!-- ── More Tools — left=83px top=487px 1104×212px ── -->
+    <section class="more-tools" aria-label="More tools">
+      <h2 class="section-title">More Tools</h2>
+      <div class="tile-list">
+
+        <!-- Boards — icon confirmed from Figma: tv -->
+        <div class="tile">
+          <div class="tile__left">
+            <span class="material-symbols-outlined" aria-hidden="true">tv</span>
+          </div>
+          <div class="tile__right">
+            <span class="tile__name">Boards</span>
+            <span class="tile__desc">Use big screen views</span>
+          </div>
+        </div>
+
+        <!-- Terminal Cleans — icon confirmed from Figma: track_changes -->
+        <div class="tile">
+          <div class="tile__left">
+            <span class="material-symbols-outlined" aria-hidden="true">track_changes</span>
+          </div>
+          <div class="tile__right">
+            <span class="tile__name">Terminal Cleans</span>
+            <span class="tile__desc">Audit room cleans</span>
+          </div>
+        </div>
+
+      </div>
+    </section><!-- /more-tools -->
+
+  </div><!-- /frame-a2g -->
+
 </body>
 </html>
